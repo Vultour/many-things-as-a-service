@@ -22,12 +22,28 @@ $app->group(['prefix' => 'random', 'namespace' => 'App\Http\Controllers'], funct
 
 
 $app->group(['prefix' => 'leftpad', 'namespace' => 'App\Http\Controllers'], function() use ($app){
-    $app->get('{input}/{length}',       'LeftPadController@getDefault');
+    $app->get('{input}/{length}',        'LeftPadController@getDefault');
     $app->get('{input}/{length}/{char}', 'LeftPadController@getCustom');
 });
 
 
 $app->group(['prefix' => 'rightpad', 'namespace' => 'App\Http\Controllers'], function() use ($app){
-    $app->get('{input}/{length}',       'RightPadController@getDefault');
+    $app->get('{input}/{length}',        'RightPadController@getDefault');
     $app->get('{input}/{length}/{char}', 'RightPadController@getCustom');
+});
+
+$app->group(['prefix' => 'loading', 'namespace' => 'App\Http\Controllers'], function() use ($app){
+    $app->get('{done}',                                                     'LoadingBarController@getDefault');
+    $app->get('{done}/{length}',                                            'LoadingBarController@getLength');
+    $app->get('{done}/{length}/{loadedChar}/{loadingChar}/{borderChar}',    'LoadingBarController@getCustom');
+});
+
+$app->group(['prefix' => 'codename', 'namespace' => 'App\Http\Controllers'], function() use ($app){
+    $app->get('',                               'CodenameGeneratorController@getDefault');
+    $app->get('categories',                     'CodenameGeneratorController@getCategories');
+    $app->get('{prefix}/{dictionary}/{suffix}', 'CodenameGeneratorController@getCustom');
+});
+
+$app->group(['prefix' => 'bofh-excuses', 'namespace' => 'App\Http\Controllers'], function() use ($app){
+    $app->get('',   'BOFHExcusesController@getDefault');
 });
