@@ -28,6 +28,22 @@ class ApiController extends Controller
         return $output;
     }
 
+    protected function textify($input, $indent = 0){
+        if (!is_array($input)){ return str_repeat(' ', $indent) . "$input\n"; }
+
+        $output = "";
+        foreach ($input as $key => $value){
+            $output .= str_repeat(' ', $indent) . "$key\n";
+            if (is_array($value)){
+                $output .= $this->textify($value, $indent + 4);
+            } else{
+                $output .= str_repeat(' ', $indent + 4) . "$value\n";
+            }
+        }
+
+        return $output;
+    }
+
     protected function createResponse($output, $status){
         // TODO
         $accept = $this->request->header('Accept');
@@ -41,7 +57,7 @@ class ApiController extends Controller
             }
             return view('output', ['output' => $htmlOutput, 'serviceTitle' => $this->serviceTitle]);
         } else if (strpos($accept, 'text/plain') !== FALSE){
-            return response($output, $status)
+            return response($this->textify($output), $status)
                     ->header('Content-Type', 'text/plain');
         } else{
             return response()
