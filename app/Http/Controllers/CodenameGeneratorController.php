@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class CodenameGeneratorController extends ApiController
 {
+    protected $serviceTitle = 'Codename Generator';
+
     private function parsePage($page){
         $match = preg_match('/3"><b>([^<].*?)</si', $page, $groups);
         return ($match)?(trim(str_replace("\n", ' ', $groups[1]))):(false);

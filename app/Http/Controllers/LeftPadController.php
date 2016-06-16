@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class LeftPadController extends ApiController
 {
+    protected $serviceTitle = 'Left Pad';
+
     public function getDefault($input, $length){
         if (!ctype_digit($length) || !is_numeric($length)){ return $this->error('Length must be an integer'); }
         if (($length > 4096) || (strlen($input) > 4096)){ return $this->error('Input size too large, please contact us for pricing'); }

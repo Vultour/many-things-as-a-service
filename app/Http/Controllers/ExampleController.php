@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class ExampleController extends ApiController
 {
+    protected $serviceTitle = 'Service';
+
     public function __construct()
     {
         //

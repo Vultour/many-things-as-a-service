@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class RandomController extends ApiController
 {
+    protected $serviceTitle = 'Random';
+
     public function getDefault(){
         return $this->success(mt_rand()/mt_getrandmax());
     }

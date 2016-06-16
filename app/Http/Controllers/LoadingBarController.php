@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class LoadingBarController extends ApiController
 {
+    protected $serviceTitle = 'Loading Bar';
+
     public function generateLoadingBar($done, $length, $loadedChar, $loadingChar, $borderChar){
         if (($done < 0) || ($done > 100) || (strlen($loadedChar) != 1) || (strlen($loadingChar) != 1) || (strlen($borderChar) != 1)){ return "ERROR"; }
 

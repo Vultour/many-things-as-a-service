@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 class BOFHExcusesController extends ApiController
 {
+    protected $serviceTitle = 'BOFH Excuses';
+
     public function getDefault(){
         $curl = curl_init();
         curl_setopt_array(
