@@ -14,6 +14,8 @@ class ApiController extends Controller
     }
 
     protected function htmlify($input){
+        if (!is_array($input)){ return '<pre>' . str_replace(' ', '&nbsp;', $input) . '</pre>'; }
+
         $output = '<ul>';
         foreach ($input as $key => $value){
             $output .= "<li style='margin-left:15px;'><strong>$key</strong>: ";
@@ -25,13 +27,14 @@ class ApiController extends Controller
             $output .= '</li>';
         }
         $output .= '</ul>';
+
         return $output;
     }
 
     protected function textify($input, $indent = 0){
         if (!is_array($input)){ return str_repeat(' ', $indent) . "$input\n"; }
 
-        $output = "";
+        $output = '';
         foreach ($input as $key => $value){
             $output .= str_repeat(' ', $indent) . "$key\n";
             if (is_array($value)){
@@ -49,13 +52,7 @@ class ApiController extends Controller
         $accept = $this->request->header('Accept');
 
         if (strpos($accept, 'text/html') !== FALSE){
-            $htmlOutput = "";
-            if (is_array($output)){
-                $htmlOutput = $this->htmlify($output);
-            } else{
-                $htmlOutput = '<pre>' . str_replace(' ', '&nbsp;', $output) . '</pre>';
-            }
-            return view('output', ['output' => $htmlOutput, 'serviceTitle' => $this->serviceTitle]);
+            return view('output', ['output' => $this->htmlify($output), 'serviceTitle' => $this->serviceTitle]);
         } else if (strpos($accept, 'text/plain') !== FALSE){
             return response($this->textify($output), $status)
                     ->header('Content-Type', 'text/plain');
