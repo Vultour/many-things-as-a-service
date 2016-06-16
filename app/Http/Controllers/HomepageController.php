@@ -67,11 +67,11 @@ class HomepageController{
                         'description'   => 'Create a default loading bar, indicating :done% as loaded'
                     ],
                     [
-                        'path'          => '/loading/:length/:done',
+                        'path'          => '/loading/:done/:length',
                         'description'   => 'Create a :length long loading bar, with :done% indicated as loaded'
                     ],
                     [
-                        'path'          => '/loading/:length/:value/:loadedChar/:loadingChar/:borderChar',
+                        'path'          => '/loading/:done/:length/:loadedChar/:loadingChar/:borderChar',
                         'description'   => 'Create a :length long loading bar, with :done% indicated as loaded <br>
                                             :loadedChar will be displayed for segments loaded <br>
                                             :loadingChar will be displayed for segment currently being loaded <br>
@@ -81,7 +81,7 @@ class HomepageController{
             ],
             'codename' => [
                 'title'         => 'Codename Generator',
-                'description'   => 'http://www.codenamegenerator.com/',
+                'description'   => 'Generates codenames - http://www.codenamegenerator.com/',
                 'endpoints'     => [
                     [
                         'path'          => '/codename/',
@@ -92,8 +92,8 @@ class HomepageController{
                         'description'   => 'Display the available categories for each word'
                     ],
                     [
-                        'path'          => '/codename/:first/:second/:third',
-                        'description'   => 'Generate a codename with the specified categories for first, second and third words'
+                        'path'          => '/codename/:prefix/:dictionary/:suffix',
+                        'description'   => 'Generate a codename with the specified categories for prefix, dictionary and suffix'
                     ]
                 ]
             ],
