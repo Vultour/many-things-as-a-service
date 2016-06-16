@@ -3,6 +3,7 @@
     <head>
         <title>MTaaS - <?php echo $serviceTitle; ?></title>
         <link rel="stylesheet" href="/css/materialize.min.css">
+        <style>pre{white-space:pre-wrap;word-wrap:break-word;}</style>
     </head>
     <body>
         <div class="row container">
