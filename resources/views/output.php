@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MTaaS</title>
+        <title>MTaaS - <?php echo $serviceTitle; ?></title>
         <link rel="stylesheet" href="/css/materialize.min.css">
     </head>
     <body>
