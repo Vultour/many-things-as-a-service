@@ -10,9 +10,7 @@
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                         <span class="card-title"><?php echo $serviceTitle; ?></span>
-                        <p>
-                            <?php echo $output; ?>
-                        </p>
+                        <p><?php echo $output; ?></p>
                     </div>
                     <div class="card-action">
                     <a href="/">Many-Things-as-a-Service</a>

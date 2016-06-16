@@ -20,7 +20,7 @@ class ApiController extends Controller
             if (is_array($value)){
                 $output .= $this->htmlify($value);
             } else{
-                $output .= $value;
+                $output .= str_replace(' ', '&nbsp;', $value);
             }
             $output .= '</li>';
         }
@@ -37,7 +37,7 @@ class ApiController extends Controller
             if (is_array($output)){
                 $htmlOutput = $this->htmlify($output);
             } else{
-                $htmlOutput = $output;
+                $htmlOutput = str_replace(' ', '&nbsp;', $output);
             }
             return view('output', ['output' => $htmlOutput, 'serviceTitle' => $this->serviceTitle]);
         } else if (strpos($accept, 'text/plain') !== FALSE){
